@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component} from 'react';
 import './App.css';
+// import L from 'leaflet';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+    state = {
+        lat: "", 
+        lng: ""
+    }
+
+    componentDidMount() {
+        this.getLocation();
+    }
+
+    getLocation = () => {
+        navigator.geolocation.getCurrentPosition((position) => { 
+            this.setState({
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+            }, () => {
+                console.log(this.state.lat, this.state.lng);
+            }); 
+        });
+    }
+    
+    getMap = () => {
+    }
+
+
+    render() {
+        return (
+            <div className="App">
+
+                <div>
+                    Lat: {this.state.lat}, Lng: {this.state.lng}
+                </div>
+
+                <div id="mapId"></div>
+
+            </div>
+        );
+    }
 }
 
 export default App;
