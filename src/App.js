@@ -16,8 +16,8 @@ class App extends Component {
     getLocation = () => {
         navigator.geolocation.getCurrentPosition((position) => { 
             this.setState({
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
+                lat: position.coords.latitude.toFixed(4),
+                lng: position.coords.longitude.toFixed(4),
             }, () => {
                 console.log(this.state.lat, this.state.lng);
                 this.getMap();
