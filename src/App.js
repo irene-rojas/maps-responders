@@ -8,6 +8,99 @@ import axios from 'axios';
 // const hospitals = require('./hospitals.json');
 // this returns same error as above
 
+const hospitals = [
+    {
+        name: "Inova Franconia-Springfield",
+        address: "6355 Walker Ln",
+        city: "Alexandria",
+        state: "VA",
+        zip: 22310,
+        lng:-77.161401,
+        lat:38.770440,
+        lngLat: [-77.161401,38.770440],
+        id: 1
+    },
+    {
+        name: "Inova Alexandria",
+        address: "4320 Seminary Rd",
+        city: "Alexandria",
+        state: "VA",
+        zip: 22304,
+        lng: -77.104437,
+        lat: 38.825734,
+        lngLat: [-77.104437,38.825734],
+        id: 2
+    },
+    {
+        name: "Inova Mount Vernon",
+        address: "2501 Parkers Ln",
+        city: "Alexandria",
+        state: "VA",
+        zip: 22306,
+        lng: -77.077574,
+        lat: 38.743491,
+        lngLat: [-77.077574,38.743491],
+        id: 3
+    },
+    {
+        name: "Inova Fairfax City",
+        address: "4315 Chain Bridge Rd",
+        city: "Fairfax",
+        state: "VA",
+        zip: 22030,
+        lng: -77.310961,
+        lat: 38.842723,
+        lngLat: [-77.310961,38.842723],
+        id: 4
+    },
+    {
+        name: "Inova Fairfax Hospital",
+        address: "3300 Gallows Rd",
+        city: "Falls Church",
+        state: "VA",
+        zip: 22042,
+        lng: -77.226965,
+        lat: 38.857931,
+        lngLat: [-77.226965,38.857931],
+        id: 5
+    },
+    {
+        name: "Inova Lorton",
+        address: "9321 Sanger St,",
+        city: "Lorton",
+        state: "VA",
+        zip: 22079,
+        lng: -77.226904,
+        lat: 38.702781,
+        lngLat: [-77.226904,38.702781],
+        id: 6
+    },
+    {
+        name: "Virginia Hospital Center",
+        address: "1701 N George Mason Dr",
+        city: "Arlington",
+        state: "VA",
+        zip: 22205,
+        lng: -77.126455,
+        lat: 38.888974,
+        lngLat: [-77.126455,38.888974],
+        id: 7
+    },
+    {
+        name: "George Washington University Hospital",
+        address: "900 23rd St NW",
+        city: "Washington",
+        state: "DC",
+        zip: 20037,
+        lng: -77.050458,
+        lat: 38.901589,
+        lngLat: [-77.050458,38.901589],
+        id: 8
+    }
+];
+
+
+
 class App extends Component {
 
     state = {
