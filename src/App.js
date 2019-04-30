@@ -13,6 +13,7 @@ class App extends Component {
     state = {
         lat: "", 
         lng: "",
+        // since JSON doesn't want to import, I'll need to make the hospital list in state
     }
 
     componentDidMount() {
