@@ -1,13 +1,18 @@
 import React, { Component} from 'react';
 import './App.css';
+// import hospitals from "./hospitals.json";
+// Module parse failed: Unexpected end of JSON input while parsing near ''
 import mapboxgl from 'mapbox-gl';
 import axios from 'axios';
+
+// const hospitals = require('./hospitals.json');
+// this returns same error as above
 
 class App extends Component {
 
     state = {
         lat: "", 
-        lng: ""
+        lng: "",
     }
 
     componentDidMount() {
