@@ -1,6 +1,8 @@
 import React, { Component} from 'react';
 import './App.css';
-import L from 'leaflet';
+import mapboxgl from 'mapbox-gl';
+
+
 
 class App extends Component {
 
@@ -16,25 +18,22 @@ class App extends Component {
     getLocation = () => {
         navigator.geolocation.getCurrentPosition((position) => { 
             this.setState({
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
+                lat: position.coords.latitude.toFixed(4),
+                lng: position.coords.longitude.toFixed(4),
             }, () => {
                 console.log(this.state.lat, this.state.lng);
-                this.getMap();
             }); 
         });
     }
     
     getMap = () => {
-        var map = L.map('map').setView([this.state.lat, this.state.lng], 13);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-        
-        L.marker([this.state.lat, this.state.lng]).addTo(map)
-            .bindPopup('You are here.')
-            .openPopup();
+        mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API;
+        let map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [this.state.lat, this.state.lng],
+            zoom: 13
+            });
     }
 
 
