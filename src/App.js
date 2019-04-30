@@ -1,8 +1,7 @@
 import React, { Component} from 'react';
 import './App.css';
 import mapboxgl from 'mapbox-gl';
-// import MapboxGeocoder from 'mapbox-gl-geocoder';
-
+import axios from 'axios';
 
 class App extends Component {
 
@@ -23,6 +22,7 @@ class App extends Component {
             }, () => {
                 console.log(this.state.lat, this.state.lng);
                 this.getMap();
+                this.findHospitals();
             }); 
         });
     }
@@ -34,7 +34,7 @@ class App extends Component {
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [this.state.lng, this.state.lat],
-            zoom: 13
+            zoom: 11
             });
         new mapboxgl.Marker()
             .setLngLat([this.state.lng, this.state.lat])
@@ -44,10 +44,15 @@ class App extends Component {
         //     .setHTML("<h1>You are here!</h1>")
         //     .setMaxWidth("200px")
         //     .addTo(map);
-        // var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
-        // map.addControl(geocoder);
     }
 
+    findHospitals = () => {
+        axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/hospital.json?proximity=${this.state.lng},${this.state.lat}&access_token=pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmV6NXkyY3cwNDlzMDFqYWR4dXl6In0.5UPvZCHoxCO0nXfMJP0R7A`)
+        .then(res => {
+            const result = res.data;
+            console.log(result);
+        })
+    }
 
     render() {
         return (
