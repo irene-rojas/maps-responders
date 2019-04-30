@@ -33,7 +33,7 @@ class App extends Component {
         }).addTo(map);
         
         L.marker([this.state.lat, this.state.lng]).addTo(map)
-            .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+            .bindPopup('You are here.')
             .openPopup();
     }
 
@@ -41,10 +41,6 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-
-                {/* <div>
-                    Lat: {this.state.lat}, Lng: {this.state.lng}
-                </div> */}
 
                 <div id="map"></div>
 
