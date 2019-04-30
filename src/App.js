@@ -15,9 +15,9 @@ const hospitals = [
         city: "Alexandria",
         state: "VA",
         zip: 22310,
-        lng:-77.161401,
-        lat:38.770440,
-        lngLat: [-77.161401,38.770440],
+        lng: -77.160734,
+        lat: 38.767261,
+        lngLat: [-77.160734,38.767261],
         id: 1
     },
     {
@@ -26,9 +26,9 @@ const hospitals = [
         city: "Alexandria",
         state: "VA",
         zip: 22304,
-        lng: -77.104437,
-        lat: 38.825734,
-        lngLat: [-77.104437,38.825734],
+        lng: -77.104506,
+        lat: 38.822312,
+        lngLat: [-77.104506,38.822312],
         id: 2
     },
     {
@@ -37,9 +37,9 @@ const hospitals = [
         city: "Alexandria",
         state: "VA",
         zip: 22306,
-        lng: -77.077574,
-        lat: 38.743491,
-        lngLat: [-77.077574,38.743491],
+        lng: -77.076892,
+        lat: 38.739944,
+        lngLat: [-77.076892,38.739944],
         id: 3
     },
     {
@@ -48,9 +48,9 @@ const hospitals = [
         city: "Fairfax",
         state: "VA",
         zip: 22030,
-        lng: -77.310961,
-        lat: 38.842723,
-        lngLat: [-77.310961,38.842723],
+        lng: -77.310210,
+        lat: 38.838109,
+        lngLat: [-77.310210,38.838109],
         id: 4
     },
     {
@@ -137,17 +137,81 @@ class App extends Component {
         new mapboxgl.Marker()
             .setLngLat([this.state.lng,this.state.lat])
             .addTo(map);
-        new mapboxgl.Popup({className: 'current'})
+
+        new mapboxgl.Popup({className: 'currentPopup'})
             .setLngLat([this.state.lng,this.state.lat])
-            .setHTML("<p>Current</p>")
+            .setText("Current")
             .setMaxWidth("100px")
             .addTo(map);
-        this.showHospitals();
+
+        new mapboxgl.Marker()
+            .setLngLat(hospitals[0].lngLat)
+            .addTo(map);
+        new mapboxgl.Popup({className: 'hospitalPopup'})
+            .setLngLat(hospitals[0].lngLat)
+            .setText(hospitals[0].name)
+            .addTo(map);
+
+        new mapboxgl.Marker()
+            .setLngLat(hospitals[1].lngLat)
+            .addTo(map);
+        new mapboxgl.Popup({className: 'hospitalPopup'})
+            .setLngLat(hospitals[1].lngLat)
+            .setText(hospitals[1].name)
+            .addTo(map);
+
+        new mapboxgl.Marker()
+            .setLngLat(hospitals[2].lngLat)
+            .addTo(map);
+        new mapboxgl.Popup({className: 'hospitalPopup'})
+            .setLngLat(hospitals[2].lngLat)
+            .setText(hospitals[2].name)
+            .addTo(map);
+
+        new mapboxgl.Marker()
+            .setLngLat(hospitals[3].lngLat)
+            .addTo(map);
+        new mapboxgl.Popup({className: 'hospitalPopup'})
+            .setLngLat(hospitals[3].lngLat)
+            .setText(hospitals[3].name)
+            .addTo(map);
+
+        new mapboxgl.Marker()
+            .setLngLat(hospitals[4].lngLat)
+            .addTo(map);
+            new mapboxgl.Popup({className: 'hospitalPopup'})
+            .setLngLat(hospitals[4].lngLat)
+            .setText(hospitals[4].name)
+            .addTo(map);
+
+        new mapboxgl.Marker()
+            .setLngLat(hospitals[5].lngLat)
+            .addTo(map);
+        new mapboxgl.Popup({className: 'hospitalPopup'})
+            .setLngLat(hospitals[5].lngLat)
+            .setText(hospitals[5].name)
+            .addTo(map);
+
+        new mapboxgl.Marker()
+            .setLngLat(hospitals[6].lngLat)
+            .addTo(map);
+        new mapboxgl.Popup({className: 'hospitalPopup'})
+            .setLngLat(hospitals[6].lngLat)
+            .setText(hospitals[6].name)
+            .addTo(map);
+
+        new mapboxgl.Marker()
+            .setLngLat(hospitals[7].lngLat)
+            .addTo(map);
+        new mapboxgl.Popup({className: 'hospitalPopup'})
+            .setLngLat(hospitals[7].lngLat)
+            .setText(hospitals[7].name)
+            .addTo(map);
     }
 
     showHospitals = () => {
         // console.log(hospitals[3].lngLat);
-        
+
     }
 
 
