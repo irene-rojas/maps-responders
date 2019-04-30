@@ -1,12 +1,19 @@
 import React, { Component} from 'react';
 import './App.css';
-import L from 'leaflet';
+// import hospitals from "./hospitals.json";
+// Module parse failed: Unexpected end of JSON input while parsing near ''
+import mapboxgl from 'mapbox-gl';
+import axios from 'axios';
+
+// const hospitals = require('./hospitals.json');
+// this returns same error as above
 
 class App extends Component {
 
     state = {
         lat: "", 
-        lng: ""
+        lng: "",
+        // since JSON doesn't want to import, I'll need to make the hospital list in state
     }
 
     componentDidMount() {
@@ -21,22 +28,37 @@ class App extends Component {
             }, () => {
                 console.log(this.state.lat, this.state.lng);
                 this.getMap();
+                this.findHospitals();
             }); 
         });
     }
     
+    // MAPBOX - LNG, LAT!!
     getMap = () => {
-        var map = L.map('map').setView([this.state.lat, this.state.lng], 13);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-        
-        L.marker([this.state.lat, this.state.lng]).addTo(map)
-            .bindPopup('You are here.')
-            .openPopup();
+        mapboxgl.accessToken = 'pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmk3MXkwNGZxM3ludzdqcjRnNWVyIn0.K6kZ5Mxbwn7TZbocBF4F0A';
+        let map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [this.state.lng, this.state.lat],
+            zoom: 11
+            });
+        new mapboxgl.Marker()
+            .setLngLat([this.state.lng, this.state.lat])
+            .addTo(map);
+        // new mapboxgl.Popup({className: 'my-class'})
+        //     .setLngLat([this.state.lng, this.state.lat])
+        //     .setHTML("<h1>You are here!</h1>")
+        //     .setMaxWidth("200px")
+        //     .addTo(map);
     }
 
+    findHospitals = () => {
+        axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/hospital.json?proximity=${this.state.lng},${this.state.lat}&access_token=pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmV6NXkyY3cwNDlzMDFqYWR4dXl6In0.5UPvZCHoxCO0nXfMJP0R7A`)
+        .then(res => {
+            const result = res.data;
+            console.log(result);
+        })
+    }
 
     render() {
         return (
