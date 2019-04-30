@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import './App.css';
-// import L from 'leaflet';
+import L from 'leaflet';
 
 class App extends Component {
 
@@ -20,11 +20,21 @@ class App extends Component {
                 lng: position.coords.longitude,
             }, () => {
                 console.log(this.state.lat, this.state.lng);
+                this.getMap();
             }); 
         });
     }
     
     getMap = () => {
+        var map = L.map('map').setView([this.state.lat, this.state.lng], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        L.marker([this.state.lat, this.state.lng]).addTo(map)
+            .bindPopup('You are here.')
+            .openPopup();
     }
 
 
@@ -32,11 +42,7 @@ class App extends Component {
         return (
             <div className="App">
 
-                <div>
-                    Lat: {this.state.lat}, Lng: {this.state.lng}
-                </div>
-
-                <div id="mapId"></div>
+                <div id="map"></div>
 
             </div>
         );
