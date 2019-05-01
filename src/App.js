@@ -3,7 +3,7 @@ import './App.css';
 // import hospitals from "./hospitals.json";
 // Module parse failed: Unexpected end of JSON input while parsing near ''
 import mapboxgl from 'mapbox-gl';
-// import MapboxDirections from 'mapbox-gl-directions';
+import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
 import axios from 'axios';
 
 // const hospitals = require('./hospitals.json');
@@ -208,6 +208,27 @@ class App extends Component {
             .setLngLat(hospitals[7].lngLat)
             .setText(hospitals[7].name)
             .addTo(map);
+
+        let directions = new MapboxDirections({
+            accessToken: 'pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmk3MXkwNGZxM3ludzdqcjRnNWVyIn0.K6kZ5Mxbwn7TZbocBF4F0A',
+            unit: 'imperial',
+            profile: 'mapbox/driving-traffic',
+            alternatives: true,
+            congestion: true,
+            proximity: [this.state.lng,this.state.lat],
+            setOrigin: [this.state.lng,this.state.lat],
+            placeholderOrigin: `${this.state.lng},${this.state.lat}`,
+            controls: {
+                inputs: true,
+                instructions: true
+              }
+            });
+            map.addControl(directions, 'top-left');   
+
+            map.on('load', function() {
+                directions.setOrigin('Inova Franconia-Springfield'); // On load, set the origin to "Toronto, Ontario".
+                // directions.setDestination('Inova Franconia-Springfield'); // On load, set the destination.
+               });
     }
 
     directions = () => {
@@ -215,7 +236,7 @@ class App extends Component {
             .then(res => {
                 const result = res.data;
                 console.log(result);
-            })
+            });
     }
 
 
@@ -238,8 +259,6 @@ class App extends Component {
                 <div>
                     <div id="map"></div>
                 </div>
-
-                <button onClick={this.directions}>Test</button>
 
             </div>
         );
