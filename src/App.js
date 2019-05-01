@@ -3,7 +3,7 @@ import './App.css';
 // import hospitals from "./hospitals.json";
 // Module parse failed: Unexpected end of JSON input while parsing near ''
 import mapboxgl from 'mapbox-gl';
-import MapboxDirections from 'mapbox-gl-directions';
+// import MapboxDirections from 'mapbox-gl-directions';
 import axios from 'axios';
 
 // const hospitals = require('./hospitals.json');
