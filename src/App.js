@@ -1,13 +1,8 @@
 import React, { Component} from 'react';
 import './App.css';
-// import hospitals from "./hospitals.json";
-// Module parse failed: Unexpected end of JSON input while parsing near ''
 import mapboxgl from 'mapbox-gl';
-// import MapboxDirections from 'mapbox-gl-directions';
-import axios from 'axios';
-
-// const hospitals = require('./hospitals.json');
-// this returns same error as above
+import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
+// import axios from 'axios';
 
 const hospitals = [
     {
@@ -101,13 +96,12 @@ const hospitals = [
 ];
 
 
-
 class App extends Component {
 
     state = {
-        lat: "", 
         lng: "",
-        // since JSON doesn't want to import, I'll need to make the hospital list in state
+        lat: "", 
+        lngLat: []
     }
 
     componentDidMount() {
@@ -117,8 +111,9 @@ class App extends Component {
     getLocation = () => {
         navigator.geolocation.getCurrentPosition((position) => { 
             this.setState({
-                lat: position.coords.latitude.toFixed(4),
-                lng: position.coords.longitude.toFixed(4),
+                lng: position.coords.longitude,
+                lat: position.coords.latitude,
+                lngLat: [position.coords.longitude,position.coords.latitude]
             }, () => {
                 console.log(this.state.lat, this.state.lng);
                 this.getMap();
@@ -142,7 +137,7 @@ class App extends Component {
         new mapboxgl.Popup({className: 'currentPopup'})
             .setLngLat([this.state.lng,this.state.lat])
             .setText("Current")
-            .setMaxWidth("100px")
+            // .setMaxWidth("100px")
             .addTo(map);
 
         new mapboxgl.Marker()
@@ -152,6 +147,7 @@ class App extends Component {
             .setLngLat(hospitals[0].lngLat)
             .setText(hospitals[0].name)
             // might need setHTML to include directions link
+            // .setHTML(`<p><a href=${this.directions()}>${hospitals[0].name}</a></p>`)
             .addTo(map);
 
         new mapboxgl.Marker()
@@ -209,29 +205,36 @@ class App extends Component {
             .setLngLat(hospitals[7].lngLat)
             .setText(hospitals[7].name)
             .addTo(map);
+
+        let directions = new MapboxDirections({
+            accessToken: 'pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmk3MXkwNGZxM3ludzdqcjRnNWVyIn0.K6kZ5Mxbwn7TZbocBF4F0A',
+            unit: 'imperial',
+            profile: 'mapbox/driving-traffic',
+            alternatives: true,
+            congestion: true,
+            flyTo: false,
+            proximity: [this.state.lng,this.state.lat],
+            setOrigin: [this.state.lng,this.state.lat],
+            // placeholderOrigin: `${this.state.lng},${this.state.lat}`,
+            controls: {
+                inputs: true,
+                instructions: true,
+              }
+            });
+            map.addControl(directions, 'top-left');   
+
+            map.on('load', function() {
+                // directions.setOrigin([this.state.lng,this.state.lat]); // On load, set the origin... but it's not working with state.
+            });
     }
 
-    directions = () => {
-        // console.log(hospitals[3].lngLat);
-        // when click "directions to here" link on popup, complete api directions request with current lngLat
-        axios.get(`https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${this.state.lng},${this.state.lat};${hospitals[0].lngLat}?access_token=pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmV6NXkyY3cwNDlzMDFqYWR4dXl6In0.5UPvZCHoxCO0nXfMJP0R7A`)
-            .then(res => {
-                const result = res.data;
-                console.log(result);
-            })
-    }
-
-
-
-
-    // findHospitals = () => {
-    //     axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/er.json?proximity=${this.state.lng},${this.state.lat}&access_token=pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmV6NXkyY3cwNDlzMDFqYWR4dXl6In0.5UPvZCHoxCO0nXfMJP0R7A`)
-    //     .then(res => {
-    //         const result = res.data;
-    //         console.log(result);
-    //     })
+    // directions = () => {
+    //     axios.get(`https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${this.state.lng},${this.state.lat};${hospitals[0].lngLat}?access_token=pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmV6NXkyY3cwNDlzMDFqYWR4dXl6In0.5UPvZCHoxCO0nXfMJP0R7A`)
+    //         .then(res => {
+    //             const result = res.data;
+    //             console.log(result);
+    //         });
     // }
-
 
 
     render() {
@@ -241,8 +244,6 @@ class App extends Component {
                 <div>
                     <div id="map"></div>
                 </div>
-
-                <button onClick={this.directions}>Test</button>
 
             </div>
         );
