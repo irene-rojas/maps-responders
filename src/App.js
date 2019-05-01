@@ -127,18 +127,19 @@ class App extends Component {
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [this.state.lng,this.state.lat],
-            zoom: 10
+            zoom: 12
             });
 
         // CURRENT LOCATION
-        new mapboxgl.Marker()
-            .setLngLat([this.state.lng,this.state.lat])
-            .addTo(map);
-        new mapboxgl.Popup({className: 'currentPopup'})
-            .setLngLat([this.state.lng,this.state.lat])
-            .setText("Current")
-            .addTo(map);
+        // new mapboxgl.Marker()
+        //     .setLngLat([this.state.lng,this.state.lat])
+        //     .addTo(map);
+        // new mapboxgl.Popup({className: 'currentPopup'})
+        //     .setLngLat([this.state.lng,this.state.lat])
+        //     .setText("Current")
+        //     .addTo(map);
 
+        // first marker backup
         // new mapboxgl.Marker()
         //     .setLngLat(hospitals[0].lngLat)
         //     .addTo(map);
@@ -147,16 +148,18 @@ class App extends Component {
         //     .setText(hospitals[0].name)
         //     .addTo(map);
 
-        new mapboxgl.Marker()
-            .setLngLat(hospitals[0].lngLat)
-            .addTo(map);
-        new mapboxgl.Popup({className: 'hospitalPopup'})
+
+        new mapboxgl.Popup({offset: 10, className: 'hospitalPopup'})
             .setLngLat(hospitals[0].lngLat)
             // .setText(hospitals[0].name)
             // when click hospital name, setDestination to those coordinates
-            .setHTML(`
-            <p><a>${hospitals[0].name}</a></p>`)
+            .setHTML(`<p><a>${hospitals[0].name}</a></p>`)
             .addTo(map);
+        new mapboxgl.Marker()
+            .setLngLat(hospitals[0].lngLat)
+            .addTo(map);
+
+
 
         new mapboxgl.Marker()
             .setLngLat(hospitals[1].lngLat)
@@ -247,7 +250,7 @@ class App extends Component {
                 <div>
                     Navigation start defaults to your position
                     <br/>
-                    Click hospital marker for directions
+                    Click hospital marker base for directions
                 </div>
 
                 <div>
