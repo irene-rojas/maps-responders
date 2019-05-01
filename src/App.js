@@ -3,7 +3,8 @@ import './App.css';
 // import hospitals from "./hospitals.json";
 // Module parse failed: Unexpected end of JSON input while parsing near ''
 import mapboxgl from 'mapbox-gl';
-// import axios from 'axios';
+// import MapboxDirections from 'mapbox-gl-directions';
+import axios from 'axios';
 
 // const hospitals = require('./hospitals.json');
 // this returns same error as above
@@ -150,6 +151,7 @@ class App extends Component {
         new mapboxgl.Popup({className: 'hospitalPopup'})
             .setLngLat(hospitals[0].lngLat)
             .setText(hospitals[0].name)
+            // might need setHTML to include directions link
             .addTo(map);
 
         new mapboxgl.Marker()
@@ -209,9 +211,14 @@ class App extends Component {
             .addTo(map);
     }
 
-    showHospitals = () => {
+    directions = () => {
         // console.log(hospitals[3].lngLat);
-
+        // when click "directions to here" link on popup, complete api directions request with current lngLat
+        axios.get(`https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${this.state.lng},${this.state.lat};${hospitals[0].lngLat}?access_token=pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmV6NXkyY3cwNDlzMDFqYWR4dXl6In0.5UPvZCHoxCO0nXfMJP0R7A`)
+            .then(res => {
+                const result = res.data;
+                console.log(result);
+            })
     }
 
 
@@ -231,7 +238,11 @@ class App extends Component {
         return (
             <div className="App">
 
-                <div id="map"></div>
+                <div>
+                    <div id="map"></div>
+                </div>
+
+                <button onClick={this.directions}>Test</button>
 
             </div>
         );
