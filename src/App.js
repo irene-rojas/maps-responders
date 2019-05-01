@@ -137,7 +137,6 @@ class App extends Component {
         new mapboxgl.Popup({className: 'currentPopup'})
             .setLngLat([this.state.lng,this.state.lat])
             .setText("Current")
-            // .setMaxWidth("100px")
             .addTo(map);
 
         new mapboxgl.Marker()
@@ -215,7 +214,6 @@ class App extends Component {
             flyTo: false,
             proximity: [this.state.lng,this.state.lat],
             setOrigin: [this.state.lng,this.state.lat],
-            // placeholderOrigin: `${this.state.lng},${this.state.lat}`,
             controls: {
                 inputs: true,
                 instructions: true,
@@ -227,14 +225,6 @@ class App extends Component {
                 directions.setOrigin([this.state.lng,this.state.lat]);
             });
     }
-
-    // directions = () => {
-    //     axios.get(`https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${this.state.lng},${this.state.lat};${hospitals[0].lngLat}?access_token=pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmV6NXkyY3cwNDlzMDFqYWR4dXl6In0.5UPvZCHoxCO0nXfMJP0R7A`)
-    //         .then(res => {
-    //             const result = res.data;
-    //             console.log(result);
-    //         });
-    // }
 
 
     render() {
