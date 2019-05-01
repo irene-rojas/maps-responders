@@ -241,6 +241,12 @@ class App extends Component {
             <div className="App">
 
                 <div>
+                    Navigation starting position defaults to your position
+                    <br/>
+                    Click hospital marker for directions
+                </div>
+
+                <div>
                     <div id="map"></div>
                 </div>
 
