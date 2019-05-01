@@ -188,7 +188,8 @@ class App extends Component {
     
     // MAPBOX - LNG, LAT!!
     getMap = () => {
-        mapboxgl.accessToken = 'pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmk3MXkwNGZxM3ludzdqcjRnNWVyIn0.K6kZ5Mxbwn7TZbocBF4F0A';
+        mapboxgl.accessToken = 'pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmV6NXkyY3cwNDlzMDFqYWR4dXl6In0.5UPvZCHoxCO0nXfMJP0R7A';
+        // get new token for production
         let map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
@@ -268,8 +269,56 @@ class App extends Component {
             .setText(hospitals[7].name)
             .addTo(map);
 
+        new mapboxgl.Marker()
+            .setLngLat(hospitals[8].lngLat)
+            .addTo(map);
+        new mapboxgl.Popup({className: 'hospitalPopup'})
+            .setLngLat(hospitals[8].lngLat)
+            .setText(hospitals[8].name)
+            .addTo(map);
+
+        new mapboxgl.Marker()
+            .setLngLat(hospitals[9].lngLat)
+            .addTo(map);
+        new mapboxgl.Popup({className: 'hospitalPopup'})
+            .setLngLat(hospitals[9].lngLat)
+            .setText(hospitals[9].name)
+            .addTo(map);
+
+        new mapboxgl.Marker()
+            .setLngLat(hospitals[10].lngLat)
+            .addTo(map);
+        new mapboxgl.Popup({className: 'hospitalPopup'})
+            .setLngLat(hospitals[10].lngLat)
+            .setText(hospitals[10].name)
+            .addTo(map);
+
+        new mapboxgl.Marker()
+            .setLngLat(hospitals[11].lngLat)
+            .addTo(map);
+        new mapboxgl.Popup({className: 'hospitalPopup'})
+            .setLngLat(hospitals[11].lngLat)
+            .setText(hospitals[11].name)
+            .addTo(map);
+
+        new mapboxgl.Marker()
+            .setLngLat(hospitals[12].lngLat)
+            .addTo(map);
+        new mapboxgl.Popup({className: 'hospitalPopup'})
+            .setLngLat(hospitals[12].lngLat)
+            .setText(hospitals[12].name)
+            .addTo(map);
+
+        new mapboxgl.Marker()
+            .setLngLat(hospitals[13].lngLat)
+            .addTo(map);
+        new mapboxgl.Popup({className: 'hospitalPopup'})
+            .setLngLat(hospitals[13].lngLat)
+            .setText(hospitals[13].name)
+            .addTo(map);
+
         let directions = new MapboxDirections({
-            accessToken: 'pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmk3MXkwNGZxM3ludzdqcjRnNWVyIn0.K6kZ5Mxbwn7TZbocBF4F0A',
+            accessToken: 'pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmV6NXkyY3cwNDlzMDFqYWR4dXl6In0.5UPvZCHoxCO0nXfMJP0R7A',
             unit: 'imperial',
             profile: 'mapbox/driving-traffic',
             alternatives: true,
