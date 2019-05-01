@@ -101,13 +101,11 @@ const hospitals = [
 ];
 
 
-
 class App extends Component {
 
     state = {
         lat: "", 
         lng: "",
-        // since JSON doesn't want to import, I'll need to make the hospital list in state
     }
 
     componentDidMount() {
@@ -142,7 +140,7 @@ class App extends Component {
         new mapboxgl.Popup({className: 'currentPopup'})
             .setLngLat([this.state.lng,this.state.lat])
             .setText("Current")
-            .setMaxWidth("100px")
+            // .setMaxWidth("100px")
             .addTo(map);
 
         new mapboxgl.Marker()
@@ -152,6 +150,7 @@ class App extends Component {
             .setLngLat(hospitals[0].lngLat)
             .setText(hospitals[0].name)
             // might need setHTML to include directions link
+            // .setHTML(`<p><a href=${this.directions()}>${hospitals[0].name}</a></p>`)
             .addTo(map);
 
         new mapboxgl.Marker()
@@ -212,8 +211,6 @@ class App extends Component {
     }
 
     directions = () => {
-        // console.log(hospitals[3].lngLat);
-        // when click "directions to here" link on popup, complete api directions request with current lngLat
         axios.get(`https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${this.state.lng},${this.state.lat};${hospitals[0].lngLat}?access_token=pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmV6NXkyY3cwNDlzMDFqYWR4dXl6In0.5UPvZCHoxCO0nXfMJP0R7A`)
             .then(res => {
                 const result = res.data;
