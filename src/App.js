@@ -129,14 +129,13 @@ class App extends Component {
             center: [this.state.lng,this.state.lat],
             zoom: 10
             });
-        new mapboxgl.Marker()
-            .setLngLat([this.state.lng,this.state.lat])
-            .addTo(map);
-
-        new mapboxgl.Popup({className: 'currentPopup'})
-            .setLngLat([this.state.lng,this.state.lat])
-            .setText("Current")
-            .addTo(map);
+        // new mapboxgl.Marker()
+        //     .setLngLat([this.state.lng,this.state.lat])
+        //     .addTo(map);
+        // new mapboxgl.Popup({className: 'currentPopup'})
+        //     .setLngLat([this.state.lng,this.state.lat])
+        //     .setText("Current")
+        //     .addTo(map);
 
         new mapboxgl.Marker()
             .setLngLat(hospitals[0].lngLat)
@@ -227,6 +226,12 @@ class App extends Component {
     render() {
         return (
             <div className="App">
+
+                <div>
+                    Navigation starting position defaults to your position
+                    <br/>
+                    Click hospital marker for directions
+                </div>
 
                 <div>
                     <div id="map"></div>
