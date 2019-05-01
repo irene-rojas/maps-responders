@@ -92,6 +92,72 @@ const hospitals = [
         lat: 38.901589,
         lngLat: [-77.050458,38.901589],
         id: 8
+    },
+    {
+        name: "Fort Washington Hospital",
+        address: "11711 Livingston Rd",
+        city: "Fort Washington",
+        state: "MD",
+        zip: 20744,
+        lng: -76.992611,
+        lat: 38.728376,
+        lngLat: [-76.992611,38.728376],
+        id: 9
+    },
+    {
+        name: "MedStar Washington Hospital Center",
+        address: "110 Irving St NW",
+        city: "Washington",
+        state: "DC",
+        zip: 20010,
+        lng: -77.016315,
+        lat: 38.929632,
+        lngLat: [-77.016315,38.929632],
+        id: 10
+    },
+    {
+        name: "MedStar Georgetown University Hospital",
+        address: "3800 Reservoir Rd NW",
+        city: "Washington",
+        state: "DC",
+        zip: 20007,
+        lng: -77.076138,
+        lat: 38.911695,
+        lngLat: [-77.076138,38.911695],
+        id: 11
+    },
+    {
+        name: "Howard University Hospital",
+        address: "2041 Georgia Ave NW",
+        city: "Washington",
+        state: "DC",
+        zip: 20060,
+        lng: -77.020867,
+        lat: 38.917846,
+        lngLat: [-77.020867,38.917846],
+        id: 12
+    },
+    {
+        name: "Sibley Memorial Hospital",
+        address: "5255 Loughboro Rd NW",
+        city: "Washington",
+        state: "DC",
+        zip: 20016,
+        lng: -77.108654,
+        lat: 38.937045,
+        lngLat: [-77.108654,38.937045],
+        id: 13
+    },
+    {
+        name: "Fort Belvoir Community Hospital ",
+        address: "9300 DeWitt Loop",
+        city: "Fort Belvoir",
+        state: "VA",
+        zip: 22060,
+        lng: -77.144043,
+        lat: 38.706118,
+        lngLat: [-77.144043,38.706118],
+        id: 14
     }
 ];
 
