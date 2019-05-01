@@ -129,12 +129,22 @@ class App extends Component {
             center: [this.state.lng,this.state.lat],
             zoom: 10
             });
+
+        // CURRENT LOCATION
+        new mapboxgl.Marker()
+            .setLngLat([this.state.lng,this.state.lat])
+            .addTo(map);
+        new mapboxgl.Popup({className: 'currentPopup'})
+            .setLngLat([this.state.lng,this.state.lat])
+            .setText("Current")
+            .addTo(map);
+
         // new mapboxgl.Marker()
-        //     .setLngLat([this.state.lng,this.state.lat])
+        //     .setLngLat(hospitals[0].lngLat)
         //     .addTo(map);
-        // new mapboxgl.Popup({className: 'currentPopup'})
-        //     .setLngLat([this.state.lng,this.state.lat])
-        //     .setText("Current")
+        // new mapboxgl.Popup({className: 'hospitalPopup'})
+        //     .setLngLat(hospitals[0].lngLat)
+        //     .setText(hospitals[0].name)
         //     .addTo(map);
 
         new mapboxgl.Marker()
@@ -142,7 +152,10 @@ class App extends Component {
             .addTo(map);
         new mapboxgl.Popup({className: 'hospitalPopup'})
             .setLngLat(hospitals[0].lngLat)
-            .setText(hospitals[0].name)
+            // .setText(hospitals[0].name)
+            // when click hospital name, setDestination to those coordinates
+            .setHTML(`
+            <p><a>${hospitals[0].name}</a></p>`)
             .addTo(map);
 
         new mapboxgl.Marker()
