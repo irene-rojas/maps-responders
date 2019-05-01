@@ -348,9 +348,7 @@ class App extends Component {
                     Click hospital marker base for directions
                 </div>
 
-                <div>
-                    <div id="map"></div>
-                </div>
+                <div id="map"></div>
 
             </div>
         );
