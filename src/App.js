@@ -167,6 +167,7 @@ class App extends Component {
     state = {
         lng: "",
         lat: "", 
+        lngLat: []
     }
 
     componentDidMount() {
@@ -324,12 +325,6 @@ class App extends Component {
             alternatives: true,
             congestion: true,
             flyTo: false,
-            proximity: [this.state.lng,this.state.lat],
-            setOrigin: [this.state.lng,this.state.lat],
-            controls: {
-                inputs: true,
-                instructions: true,
-              }
             });
             map.addControl(directions, 'top-left');   
 
@@ -343,11 +338,11 @@ class App extends Component {
         return (
             <div className="App">
 
-                <div>
+                <div className="title">
                     <h3>Emergency room locator</h3>
                 </div>
 
-                <div>
+                <div className="instructions">
                     Navigation start defaults to your position
                     <br/>
                     Click hospital marker base for directions
