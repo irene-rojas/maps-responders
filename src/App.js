@@ -223,8 +223,8 @@ class App extends Component {
             });
             map.addControl(directions, 'top-left');   
 
-            map.on('load', function() {
-                // directions.setOrigin([this.state.lng,this.state.lat]); // On load, set the origin... but it's not working with state.
+            map.on('load', () => {
+                directions.setOrigin([this.state.lng,this.state.lat]);
             });
     }
 
