@@ -3,6 +3,7 @@ import './App.css';
 // import hospitals from "./hospitals.json";
 // Module parse failed: Unexpected end of JSON input while parsing near ''
 import mapboxgl from 'mapbox-gl';
+import MapboxDirections from 'mapbox-gl-directions';
 import axios from 'axios';
 
 // const hospitals = require('./hospitals.json');
@@ -237,7 +238,11 @@ class App extends Component {
         return (
             <div className="App">
 
-                <div id="map"></div>
+                <div>
+                    <div id="map"></div>
+                </div>
+
+                <button onClick={this.directions}>Test</button>
 
             </div>
         );
