@@ -143,7 +143,7 @@ class App extends Component {
             .addTo(map);
         new mapboxgl.Popup({className: 'hospitalPopup'})
             .setLngLat(hospitals[0].lngLat)
-            .setText('hello')
+            .setText(hospitals[0].name)
             .addTo(map);
 
         new mapboxgl.Marker()
