@@ -153,11 +153,9 @@ class App extends Component {
         new mapboxgl.Popup({className: 'hospitalPopup'})
             .setLngLat(hospitals[0].lngLat)
             // .setText(hospitals[0].name)
+            // when click hospital name, setDestination to those coordinates
             .setHTML(`
-            <p><a href="https://www.google.com/">${hospitals[0].name}</a></p>
-            
-
-            `)
+            <p><a>${hospitals[0].name}</a></p>`)
             .addTo(map);
 
         new mapboxgl.Marker()
