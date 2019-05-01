@@ -154,8 +154,9 @@ class App extends Component {
             .setLngLat(hospitals[0].lngLat)
             // .setText(hospitals[0].name)
             .setHTML(`
-            <p>${hospitals[0].name}</p>
+            <p><a href="https://www.google.com/">${hospitals[0].name}</a></p>
             
+
             `)
             .addTo(map);
 
