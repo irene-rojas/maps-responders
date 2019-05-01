@@ -3,7 +3,7 @@ import './App.css';
 // import hospitals from "./hospitals.json";
 // Module parse failed: Unexpected end of JSON input while parsing near ''
 import mapboxgl from 'mapbox-gl';
-// import axios from 'axios';
+import axios from 'axios';
 
 // const hospitals = require('./hospitals.json');
 // this returns same error as above
@@ -213,6 +213,11 @@ class App extends Component {
     directions = () => {
         // console.log(hospitals[3].lngLat);
         // when click "directions to here" link on popup, complete api directions request with current lngLat
+        axios.get(`https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${this.state.lng},${this.state.lat};${hospitals[0].lngLat}?access_token=pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmV6NXkyY3cwNDlzMDFqYWR4dXl6In0.5UPvZCHoxCO0nXfMJP0R7A`)
+            .then(res => {
+                const result = res.data;
+                console.log(result);
+            })
     }
 
 
