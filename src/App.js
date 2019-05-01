@@ -1,13 +1,8 @@
 import React, { Component} from 'react';
 import './App.css';
-// import hospitals from "./hospitals.json";
-// Module parse failed: Unexpected end of JSON input while parsing near ''
 import mapboxgl from 'mapbox-gl';
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
-import axios from 'axios';
-
-// const hospitals = require('./hospitals.json');
-// this returns same error as above
+// import axios from 'axios';
 
 const hospitals = [
     {
@@ -215,29 +210,32 @@ class App extends Component {
             profile: 'mapbox/driving-traffic',
             alternatives: true,
             congestion: true,
-            proximity: [this.state.lng,this.state.lat],
-            setOrigin: [this.state.lng,this.state.lat],
-            placeholderOrigin: `${this.state.lng},${this.state.lat}`,
+            // proximity: [this.state.lng,this.state.lat],
+            // setOrigin: [this.state.lng,this.state.lat],
+            // placeholderOrigin: `${this.state.lng},${this.state.lat}`,
             controls: {
                 inputs: true,
-                instructions: true
+                instructions: true,
+                profile: false
               }
             });
             map.addControl(directions, 'top-left');   
 
             map.on('load', function() {
-                directions.setOrigin('Inova Franconia-Springfield'); // On load, set the origin to "Toronto, Ontario".
-                // directions.setDestination('Inova Franconia-Springfield'); // On load, set the destination.
+                // const lng = this.state.lng,
+
+                directions.setOrigin('this.state.lng,this.state.lat'); // On load, set the origin to "Toronto, Ontario".
+                // directions.setDestination('6355 Walker Ln, Alexandria, VA 22310'); // On load, set the destination.
                });
     }
 
-    directions = () => {
-        axios.get(`https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${this.state.lng},${this.state.lat};${hospitals[0].lngLat}?access_token=pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmV6NXkyY3cwNDlzMDFqYWR4dXl6In0.5UPvZCHoxCO0nXfMJP0R7A`)
-            .then(res => {
-                const result = res.data;
-                console.log(result);
-            });
-    }
+    // directions = () => {
+    //     axios.get(`https://api.mapbox.com/directions/v5/mapbox/driving-traffic/${this.state.lng},${this.state.lat};${hospitals[0].lngLat}?access_token=pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmV6NXkyY3cwNDlzMDFqYWR4dXl6In0.5UPvZCHoxCO0nXfMJP0R7A`)
+    //         .then(res => {
+    //             const result = res.data;
+    //             console.log(result);
+    //         });
+    // }
 
 
 
