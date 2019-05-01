@@ -99,8 +99,9 @@ const hospitals = [
 class App extends Component {
 
     state = {
-        lat: "", 
         lng: "",
+        lat: "", 
+        lngLat: []
     }
 
     componentDidMount() {
@@ -110,8 +111,9 @@ class App extends Component {
     getLocation = () => {
         navigator.geolocation.getCurrentPosition((position) => { 
             this.setState({
-                lat: position.coords.latitude.toFixed(4),
-                lng: position.coords.longitude.toFixed(4),
+                lng: position.coords.longitude,
+                lat: position.coords.latitude,
+                lngLat: [position.coords.longitude,position.coords.latitude]
             }, () => {
                 console.log(this.state.lat, this.state.lng);
                 this.getMap();
@@ -210,23 +212,20 @@ class App extends Component {
             profile: 'mapbox/driving-traffic',
             alternatives: true,
             congestion: true,
-            // proximity: [this.state.lng,this.state.lat],
-            // setOrigin: [this.state.lng,this.state.lat],
+            flyTo: false,
+            proximity: [this.state.lng,this.state.lat],
+            setOrigin: [this.state.lng,this.state.lat],
             // placeholderOrigin: `${this.state.lng},${this.state.lat}`,
             controls: {
                 inputs: true,
                 instructions: true,
-                profile: false
               }
             });
             map.addControl(directions, 'top-left');   
 
             map.on('load', function() {
-                // const lng = this.state.lng,
-
-                directions.setOrigin('this.state.lng,this.state.lat'); // On load, set the origin to "Toronto, Ontario".
-                // directions.setDestination('6355 Walker Ln, Alexandria, VA 22310'); // On load, set the destination.
-               });
+                // directions.setOrigin([this.state.lng,this.state.lat]); // On load, set the origin... but it's not working with state.
+            });
     }
 
     // directions = () => {
@@ -236,18 +235,6 @@ class App extends Component {
     //             console.log(result);
     //         });
     // }
-
-
-
-
-    // findHospitals = () => {
-    //     axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/er.json?proximity=${this.state.lng},${this.state.lat}&access_token=pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmV6NXkyY3cwNDlzMDFqYWR4dXl6In0.5UPvZCHoxCO0nXfMJP0R7A`)
-    //     .then(res => {
-    //         const result = res.data;
-    //         console.log(result);
-    //     })
-    // }
-
 
 
     render() {
