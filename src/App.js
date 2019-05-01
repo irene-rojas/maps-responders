@@ -150,6 +150,7 @@ class App extends Component {
         new mapboxgl.Popup({className: 'hospitalPopup'})
             .setLngLat(hospitals[0].lngLat)
             .setText(hospitals[0].name)
+            // might need setHTML to include directions link
             .addTo(map);
 
         new mapboxgl.Marker()
@@ -209,9 +210,9 @@ class App extends Component {
             .addTo(map);
     }
 
-    showHospitals = () => {
+    directions = () => {
         // console.log(hospitals[3].lngLat);
-
+        // when click "directions to here" link on popup, complete api directions request with current lngLat
     }
 
 
