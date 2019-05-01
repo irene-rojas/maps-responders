@@ -101,7 +101,6 @@ class App extends Component {
     state = {
         lng: "",
         lat: "", 
-        lngLat: []
     }
 
     componentDidMount() {
@@ -144,9 +143,7 @@ class App extends Component {
             .addTo(map);
         new mapboxgl.Popup({className: 'hospitalPopup'})
             .setLngLat(hospitals[0].lngLat)
-            .setText(hospitals[0].name)
-            // might need setHTML to include directions link
-            // .setHTML(`<p><a href=${this.directions()}>${hospitals[0].name}</a></p>`)
+            .setText('hello')
             .addTo(map);
 
         new mapboxgl.Marker()
