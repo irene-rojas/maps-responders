@@ -2,7 +2,6 @@ import React, { Component} from 'react';
 import './App.css';
 import mapboxgl from 'mapbox-gl';
 import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions';
-// import axios from 'axios';
 
 const hospitals = [
     {
@@ -190,7 +189,6 @@ class App extends Component {
     // MAPBOX - LNG, LAT!!
     getMap = () => {
         mapboxgl.accessToken = "pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanY1cWxnMWowMXBmNDVzMmFubG54bG9xIn0.bUcUYG7qMcxDc_QEqVj8Ww";
-        // get new token for production
         let map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11',
@@ -204,14 +202,13 @@ class App extends Component {
             .setText("You are here")
             .addTo(map);
 
+        // HOSPITALS
         new mapboxgl.Marker()
             .setLngLat(hospitals[0].lngLat)
             .addTo(map);
         new mapboxgl.Popup({className: 'hospitalPopup'})
             .setLngLat(hospitals[0].lngLat)
             .setText(hospitals[0].name)
-            // when click hospital name, setDestination to those coordinates
-            // .setHTML(`<p><a>${hospitals[0].name}</a></p>`)
             .addTo(map);
 
         new mapboxgl.Marker()
@@ -318,6 +315,7 @@ class App extends Component {
             .setText(hospitals[13].name)
             .addTo(map);
 
+        // DIRECTIONS
         let directions = new MapboxDirections({
             accessToken: "pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanY1cWxnMWowMXBmNDVzMmFubG54bG9xIn0.bUcUYG7qMcxDc_QEqVj8Ww",
             unit: 'imperial',
@@ -326,7 +324,6 @@ class App extends Component {
             congestion: true,
             flyTo: false,
             steps: true,
-            // hide directions control in mobile view
             controls: {
                 profileSwitcher: false,
                 inputs: false,
@@ -352,6 +349,8 @@ class App extends Component {
                     Navigation start defaults to your position
                     <br/>
                     Click hospital marker base for directions
+                    <br/>
+                    Powered by <a href="https://www.mapbox.com/" target="_blank" rel="noopener noreferrer">Mapbox</a>
                 </div>
 
                 <div id="map"></div>
