@@ -196,7 +196,7 @@ class App extends Component {
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [this.state.lng,this.state.lat],
             zoom: 12
-            });
+        });
 
         // CURRENT LOCATION
         new mapboxgl.Popup({closeButton: false, offset: 10, className: 'currentPopup', anchor: 'left'})

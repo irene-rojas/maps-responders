@@ -17,6 +17,10 @@
     padding: 10px;
 }
 
+.mapboxgl-popup-tip {
+    visibility: hidden;
+}
+
 p {
     margin: 0px;
 }
@@ -25,6 +29,3 @@ h3 {
     margin: 0px;
 }
 
-.mapboxgl-popup-tip {
-    visibility: hidden;
-}
