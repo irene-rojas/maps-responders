@@ -325,6 +325,12 @@ class App extends Component {
             alternatives: true,
             congestion: true,
             flyTo: false,
+            steps: true,
+            // hide directions control in mobile view
+            controls: {
+                profileSwitcher: false,
+                inputs: false,
+            }
             });
             map.addControl(directions, 'top-left');   
 

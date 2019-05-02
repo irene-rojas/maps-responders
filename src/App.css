@@ -1,31 +1,71 @@
-.App {
-    margin: 0 auto;
-    height: 100vh;
-}
+/* @media (max-width: 767px) { */
 
-#map { 
-    height: 600px;
-    width: 800px;
-}
+    .App {
+        margin: 0 auto;
+        height: 100vh;
+        display: grid;
+        grid-template-rows: repeat(2, auto) 1fr;
+        grid-template-columns: 1fr;
+    }
 
-.mapboxgl-popup-content {
-    width: auto;
-    height: auto;
-    background-color: lightblue;
-    border-radius: 10px;
-    border: 1px solid black;
-    padding: 10px;
-}
+    .title {
+        grid-row: 1/2;
+        grid-column: 1/-1;
+        text-align: center;
+        padding: 10px 10px 0px 10px;
+    }
 
-.mapboxgl-popup-tip {
-    visibility: hidden;
-}
+    .instructions {
+        grid-row: 2/3;
+        grid-column: 1/-1;
+        text-align: center;
+        padding: 10px;
+    }
 
-p {
-    margin: 0px;
-}
+    /* #map { 
+        height: 600px;
+        width: 800px;
+    } */
 
-h3 {
-    margin: 0px;
-}
+    #map { 
+        /* height: auto; */
+        width: auto;
+        grid-row: 3/4;
+        grid-column: 1/-1;
+    }
 
+    .mapbox-directions-step {
+        color: white;
+    }
+
+    /* .mapbox-directions-component-keyline {
+        visibility: hidden;
+    }
+
+    .mapbox-directions-inputs {
+        height: 0px;
+    } */
+
+    .mapboxgl-popup-content {
+        width: auto;
+        height: auto;
+        background-color: lightblue;
+        border-radius: 10px;
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+    .mapboxgl-popup-tip {
+        visibility: hidden;
+    }
+
+    p {
+        margin: 0px;
+    }
+
+    h3 {
+        margin: 0px;
+    }
+
+/* } */
+/* end mobile */
