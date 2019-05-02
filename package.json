@@ -2,9 +2,11 @@
   "name": "maps-responders",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://irene-rojas.github.io/maps-responders",
   "dependencies": {
     "@mapbox/mapbox-gl-directions": "^4.0.0",
     "axios": "^0.18.0",
+    "gh-pages": "^2.0.1",
     "json-loader": "^0.5.7",
     "leaflet": "^1.4.0",
     "mapbox-gl": "^0.54.0",
@@ -13,6 +15,8 @@
     "react-scripts": "3.0.0"
   },
   "scripts": {
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
