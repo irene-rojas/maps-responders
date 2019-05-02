@@ -1,4 +1,4 @@
-@media (max-width: 767px) {
+/* @media (max-width: 767px) { */
 
     .App {
         margin: 0 auto;
@@ -67,5 +67,5 @@
         margin: 0px;
     }
 
-}
+/* } */
 /* end mobile */
