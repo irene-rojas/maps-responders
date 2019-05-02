@@ -189,7 +189,7 @@ class App extends Component {
     
     // MAPBOX - LNG, LAT!!
     getMap = () => {
-        mapboxgl.accessToken = 'pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmV6NXkyY3cwNDlzMDFqYWR4dXl6In0.5UPvZCHoxCO0nXfMJP0R7A';
+        mapboxgl.accessToken = "pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanY1cWxnMWowMXBmNDVzMmFubG54bG9xIn0.bUcUYG7qMcxDc_QEqVj8Ww";
         // get new token for production
         let map = new mapboxgl.Map({
             container: 'map',
@@ -319,7 +319,7 @@ class App extends Component {
             .addTo(map);
 
         let directions = new MapboxDirections({
-            accessToken: 'pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanYzNmV6NXkyY3cwNDlzMDFqYWR4dXl6In0.5UPvZCHoxCO0nXfMJP0R7A',
+            accessToken: "pk.eyJ1IjoiaXJlbmVyb2phcyIsImEiOiJjanY1cWxnMWowMXBmNDVzMmFubG54bG9xIn0.bUcUYG7qMcxDc_QEqVj8Ww",
             unit: 'imperial',
             profile: 'mapbox/driving-traffic',
             alternatives: true,

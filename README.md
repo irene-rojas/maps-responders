@@ -1,3 +1,3 @@
-This is my first foray into mapping software, using Mapbox GL in a React framework. It uses the map and directions APIs. It first requests the user's location. If user agrees, it shows their location on a map, and numerous DC-area emergency rooms. Click a hospital marker and step-by-step directions appear in an overlay starting at the user's location. 
+This is my first foray into mapping software, using Mapbox GL in a React framework. It uses the map and directions APIs. It first requests the user's location. If user agrees, it shows their location on a map, and numerous DC-area emergency rooms. The data comes from a self-created database, since the Mapbox geocode API returned none-emergency room results. Click a hospital marker and step-by-step directions appear in an overlay starting at the user's location. 
 
 Since this is intended as a very simple, straightforward app, it does not have much styling besides centered text. 
