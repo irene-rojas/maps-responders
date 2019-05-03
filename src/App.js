@@ -343,6 +343,7 @@ class App extends Component {
 
                 <div className="title">
                     <h3>Emergency room locator</h3>
+                    <h5>Washington, DC Area</h5>
                 </div>
 
                 <div className="instructions">
