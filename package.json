@@ -11,7 +11,7 @@
     "gh-pages": "^2.0.1",
     "json-loader": "^0.5.7",
     "leaflet": "^1.4.0",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.21",
     "lodash-es": "^4.17.14",
     "lodash.template": "^4.5.0",
     "mapbox-gl": "^0.54.0",
